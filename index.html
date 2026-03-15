@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            margin: 0;
+            width: 100vw;
+            height: 100vh;
+            /* 移除图片背景，用视频替代 */
+        }
+
+        /* 视频背景样式 */
+        #bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .text-content {
+            padding: 2rem;
+            border-radius: 8px;
+            backdrop-filter: blur(1px);
+            margin: 2rem auto;
+            max-width: 80%;
+        }
+
+        .title {
+            position: absolute;
+            left: 50%;
+            top: 25%;
+            transform: translateX(-50%);
+            color: rgb(0, 217, 255);
+            -webkit-text-stroke: 0.25vw white;
+            font-family: "Consolas", "Monaco", monospace;
+            font-size: 6vw;
+            text-align: center;
+            width: 80%;
+        }
+
+        .subtitle {
+            position: absolute;
+            left: 50%;
+            top: 45%;
+            transform: translateX(-50%);
+            color: rgb(0, 217, 255);
+            -webkit-text-stroke: 0.15vw white;
+            font-family: "Consolas", "Monaco", monospace;
+            font-size: 3vw;
+            text-align: center;
+            width: 80%;
+        }
+
+        .toc-container {
+            max-width: 80%;
+            margin: 50px auto;
+            font-family: "Times New Roman", "SimSun", serif;
+        }
+
+        .toc-title {
+            text-align: center;
+            color: red;
+            -webkit-text-stroke: white 0.1rem;
+            font-family: "Consolas",monospace;
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #fca5a5;
+            padding-bottom: 0.5rem;
+        }
+
+        .toc-item {
+            font-family: "Consolas",monospace;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin: 1rem 0;
+            padding: 0.3rem 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .toc-item:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateX(10px);
+        }
+
+        .toc-item::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px dotted #ccc;
+            margin: 0 10px;
+        }
+
+        .toc-chapter {
+            font-size: 2.2rem;
+            color: cyan;
+            -webkit-text-stroke: rgb(255, 255, 255) 0.07rem;
+            order: 1;
+        }
+
+        /* 层级缩进 */
+        .toc-level-1 { margin-left: 0; }
+        .toc-level-2 { margin-left: 2rem; }
+        .toc-level-3 { margin-left: 4rem; }
+        
+        p {
+            margin-bottom: 1rem;
+            font-family: 'Consolas',monospace;
+            font-size: 2rem;
+            color: rgb(255, 255, 255);
+            -webkit-text-stroke: rgb(219, 121, 255) 0.05rem;
+        }
+
+        /* 超链接样式 */
+        a {
+            color: #9cceff;
+            text-decoration: none;
+            -webkit-text-stroke: 0; /* 移除文字描边 */
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #ff6600;
+        }
+
+        .code-block {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            padding: 1rem;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .content {
+                max-width: 95%;
+                padding: 1rem;
+            }
+    
+            h1 { font-size: 2rem; }
+            p { font-size: 1rem; }
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            display: none;
+            position: absolute;
+        }
+
+        /* 第一页默认显示 */
+        .slide:first-child {
+            display: block !important;
+        }
+
+        .controls {
+            position: fixed;
+            z-index: 1000;
+            padding: 15px;
+            background: rgba(255, 255, 255,0.6);
+            color: rgb(0, 0, 0);
+            border: none;
+            font-size: 1.5rem;
+            font-family: 'Consolas',monospace;
+            cursor: pointer;
+            min-width: 80px;
+            min-height: 50px;
+        }
+
+        .prev-btn {
+            bottom: 20px;
+            left: 20px;
+        }
+
+        .next-btn {
+            bottom: 20px;
+            right: 20px;
+        }
+
+        .fullscreen-btn {
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* 触屏设备优化 */
+        @media (hover: none) and (pointer: coarse) {
+            .controls {
+                min-width: 100px;
+                min-height: 60px;
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+    <title>Coding Lover</title>
+</head>
+<body>
+    <!-- 视频背景 -->
+    <video id="bg-video" autoplay muted loop>
+        <source src="videos/Animation_vs._Coding.mp4" type="video/mp4">
+        <!-- 备用图片背景 -->
+        Your browser does not support the video tag.
+    </video>
+
+<div class="slide" id="slide1">
+    <h1 class="title">Coding Lover</h1>
+    <h3 class="subtitle">Hobbies and Interests</h3>
+
+    <button class="controls prev-btn" onclick="goPrev()">PgUp</button>
+    <button class="controls next-btn" onclick="goNext()">PgDn</button>
+    <button class="controls fullscreen-btn" onclick="toggleFullscreen()">Full Scr</button>
+</div>
+
+<div class="slide" id="slide2">
+    <h1 class="toc-title">Index</h1>
+    <div class="toc-container">
+        <div class="toc-item toc-level-1" data-target="slide3">
+            <span class="toc-chapter">Beginning</span> 
+        </div>
+        <div class="toc-item toc-level-1" data-target="slide5">
+            <span class="toc-chapter">History</span>
+        </div>
+        <div class="toc-item toc-level-1" data-target="slide7">
+            <span class="toc-chapter">Why Do I Love</span>
+        </div>
+        <div class="toc-item toc-level-1" data-target="slide9">
+            <span class="toc-chapter">Ending</span>
+        </div>
+    </div>
+    <!---->
+    <button class="controls prev-btn" onclick="goPrev()">PgUp</button>
+    <button class="controls next-btn" onclick="goNext()">PgDn</button>
+    <button class="controls fullscreen-btn" onclick="toggleFullscreen()">Full Scr</button>
+</div>
+
+<div class="slide" id="slide3">
+    <h1 class="title">Beginning</h1>
+
+    <button class="controls prev-btn" onclick="goPrev()">PgUp</button>
+    <button class="controls next-btn" onclick="goNext()">PgDn</button>
+    <button class="controls fullscreen-btn" onclick="toggleFullscreen()">Full Scr</button>
+</div>
+
+<div class="slide" id="slide4">
+    <div class="text-content">
+        <p>Everyone has a variety of hobbies and interests. Some love badminton and enjoy the thrill of smashing a powerful shot; some are passionate about cycling, experiencing speed and excitement on the road; others are devoted to science, eager to explore new knowledge and expand their horizons. As for me, I am deeply passionate about information technology, especially programming.</p >
+    </div>
+
+    <button class="controls prev-btn" onclick="goPrev()">PgUp</button>
+    <button class="controls next-btn" onclick="goNext()">PgDn</button>
+    <button class="controls fullscreen-btn" onclick="toggleFullscreen()">Full Scr</button>
+</div>
+
+<div class="slide" id="slide5">
+    <h1 class="title">History</h1>
+
+    <button class="controls prev-btn" onclick="goPrev()">PgUp</button>
+    <button class="controls next-btn" onclick="goNext()">PgDn</button>
+    <button class="controls fullscreen-btn" onclick="toggleFullscreen()">Full Scr</button>
+</div>
+
+<div class="slide" id="slide6">
+    <div class="text-content">
+        <p>I was first introduced to programming on September 1, 2023, when I started learning Scratch. Later, in September 2024, during my first IT lab class, I encountered the C++ language. Since then, I've learned about crypto, safety, concurrent, shell, Linux, and eventually moved away from using namespace std. I also discovered GitHub, through conversations with AI, was introduced to LaTeX. My latest open-source project was a crypto software in Python: <a href="https://github.com/YouSuuKou/crypt" target="_blank">https://github.com/YouSuuKou/crypt</a ></p >
+    </div>
+
+    <button class="controls prev-btn" onclick="goPrev()">PgUp</button>
+    <button class="controls next-btn" onclick="goNext()">PgDn</button>
+    <button class="controls fullscreen-btn" onclick="toggleFullscreen()">Full Scr</button>
+</div>
+
+<div class="slide" id="slide7">
+    <h1 class="title">Why Do I Love</h1>
+
+    <button class="controls prev-btn" onclick="goPrev()">PgUp</button>
+    <button class="controls next-btn" onclick="goNext()">PgDn</button>
+    <button class="controls fullscreen-btn" onclick="toggleFullscreen()">Full Scr</button>
+</div>
+
+<div class="slide" id="slide8">
+    <div class="text-content">
+        <p>Throughout my learning journey, I've adhered to the principle: Making software for all platform users with no return. I often spend at least three hours in one sitting while coding. I truly enjoy the sense of control over how the code runs and the output it produces. Every time I commit and push my code to GitHub, I feel a great sense of accomplishment. While developing, my copyright awareness is getting more and more clear.</p >
+        <p>By the way, I brought a program named cpu-test, it used a concurrent empty loop to show us the quality of your cpu. And the software crypt can encrypt and decrypt you and your friend's conversations.</p>
+    </div>
+
+    <button class="controls prev-btn" onclick="goPrev()">PgUp</button>
+    <button class="controls next-btn" onclick="goNext()">PgDn</button>
+    <button class="controls fullscreen-btn" onclick="toggleFullscreen()">Full Scr</button>
+</div>
+
+<div class="slide" id="slide9">
+    <h1 class="title">Ending</h1>
+
+    <button class="controls prev-btn" onclick="goPrev()">PgUp</button>
+    <button class="controls next-btn" onclick="goNext()">PgDn</button>
+    <button class="controls fullscreen-btn" onclick="toggleFullscreen()">Full Scr</button>
+</div>
+
+<div class="slide" id="slide10">
+    <div class="text-content">
+        <p>In summary, programming is the only hobby I've consistently pursued for over a year. I'm currently learning AI and crypto. If you also enjoy developing, feel free to chat with me! You can also follow my GitHub account: <a href="https://github.com/YouSuuKou" target="_blank">https://github.com/YouSuuKou</a > and install my software.</p >
+    </div>
+
+    <button class="controls prev-btn" onclick="goPrev()">PgUp</button>
+    <button class="controls next-btn" onclick="goNext()">PgDn</button>
+    <button class="controls fullscreen-btn" onclick="toggleFullscreen()">Full Scr</button>
+</div>
+
+<div class="slide" id="slide11">
+    <h1 class="title">Thanks for Watching</h1>
+    <h1 class="subtitle">Copyright (c) 2026 YouSuuKou. Background video by Alan Becker. All rights reserved.</h1>
+
+    <button class="controls prev-btn" onclick="goPrev()">PgUp</button>
+    <button class="controls next-btn" onclick="goNext()">PgDn</button>
+    <button class="controls fullscreen-btn" onclick="toggleFullscreen()">Full Scr</button>
+</div>
+
+<script>
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+
+// 目录跳转功能
+document.querySelectorAll('.toc-item').forEach(item => {
+    item.addEventListener('click', function() {
+        const targetSlideId = this.getAttribute('data-target');
+        const targetSlide = document.getElementById(targetSlideId);
+        
+        if (targetSlide) {
+            // 隐藏所有幻灯片
+            slides.forEach(slide => {
+                slide.style.display = 'none';
+            });
+            
+            // 显示目标幻灯片
+            targetSlide.style.display = 'block';
+            
+            // 更新当前页码
+            currentSlide = Array.from(slides).indexOf(targetSlide);
+        }
+    });
+});
+
+function goPrev() {
+    if (currentSlide > 0) {
+        slides[currentSlide].style.display = 'none';
+        currentSlide--;
+        slides[currentSlide].style.display = 'block';
+    }
+}
+
+function goNext() {
+    if (currentSlide < slides.length - 1) {
+        slides[currentSlide].style.display = 'none';
+        currentSlide++;
+        slides[currentSlide].style.display = 'block';
+    }
+}
+
+function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => {
+            alert(`全屏请求失败: ${err.message}`);
+        });
+    } else {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        }
+    }
+}
+
+// 修正键盘事件 - 你之前的代码忘了加括号！
+document.addEventListener('keydown', (e) => {
+    if ((e.code === 'PageDown')||(e.code === 'ArrowRight')) {
+        goNext(); // 这里要加括号！
+    }
+    if ((e.code === 'PageUp')||(e.code === 'ArrowLeft')) {
+        goPrev(); // 这里也要加括号！
+    }
+    if (e.code === 'F11') {
+        e.preventDefault();
+        toggleFullscreen();
+    }
+});
+
+// 视频背景备用方案
+const bgVideo = document.getElementById('bg-video');
+bgVideo.addEventListener('error', function() {
+    console.log('视频加载失败，使用图片背景');
+    document.body.style.background = "url('images/backgroup-image.jpg') fixed center/cover";
+});
+</script>
+
+</body>
+</html>
