@@ -228,26 +228,29 @@
     <h3 class="toc-title">Index</h3>
     <div class="toc-container">
         <div class="toc-item toc-level-1" data-target="slide3">
-            <span class="toc-chapter">Beginning</span> 
+            <span class="toc-chapter">Introduction</span> 
         </div>
         <div class="toc-item toc-level-1" data-target="slide5">
-            <span class="toc-chapter">History</span>
+            <span class="toc-chapter">Start</span>
         </div>
         <div class="toc-item toc-level-1" data-target="slide7">
-            <span class="toc-chapter">Journey</span>
+            <span class="toc-chapter">Projects</span>
         </div>
         <div class="toc-item toc-level-1" data-target="slide9">
+            <span class="toc-chapter">Chasing Star</span>
+        </div>
+        <div class="toc-item toc-level-1" data-target="slide11">
             <span class="toc-chapter">Dream</span>
         </div>
     </div>
-    <!---->
+
     <button class="controls prev-btn" onclick="goPrev()">PgUp</button>
     <button class="controls next-btn" onclick="goNext()">PgDn</button>
     <button class="controls fullscreen-btn" onclick="toggleFullscreen()">Full Scr</button>
 </div>
 
 <div class="slide" id="slide3">
-    <h1>Beginning</h1>
+    <h1>Introduction</h1>
 
     <button class="controls prev-btn" onclick="goPrev()">PgUp</button>
     <button class="controls next-btn" onclick="goNext()">PgDn</button>
@@ -256,16 +259,18 @@
 
 <div class="slide" id="slide4">
     <div class="text-content">
-        <p>Everyone has a variety of hobbies and interests. Some love badminton and enjoy the thrill of smashing a powerful shot; some are passionate about cycling, experiencing speed and excitement on the road; others are devoted to science, eager to explore new knowledge and expand their horizons. As for me, I am deeply passionate about information technology, especially programming.</p >
+        <p>While you are enjoying the convenience of internet, using the tools to create files, or just playing games or listening to the music, 
+            do you know how many developers have built and are maintaining the internet and softwares?
+            Today, I'd like to share my interest—developing.
+        </p>
     </div>
-
     <button class="controls prev-btn" onclick="goPrev()">PgUp</button>
     <button class="controls next-btn" onclick="goNext()">PgDn</button>
     <button class="controls fullscreen-btn" onclick="toggleFullscreen()">Full Scr</button>
 </div>
 
 <div class="slide" id="slide5">
-    <h1>History</h1>
+    <h1>Start</h1>
 
     <button class="controls prev-btn" onclick="goPrev()">PgUp</button>
     <button class="controls next-btn" onclick="goNext()">PgDn</button>
@@ -274,16 +279,19 @@
 
 <div class="slide" id="slide6">
     <div class="text-content">
-        <p>I was first introduced to programming on September 1, 2023, when I started learning Scratch. Later, in September 2024, during my first IT lab class, I encountered the C++ language. Since then, I've learned about crypto, safety, concurrent, shell, Linux, and eventually moved away from using namespace std. I also discovered GitHub, through conversations with AI, was introduced to LaTeX. My latest open-source project was a crypto software in Python: <a href="https://github.com/YouSuuKou/crypt" target="_blank">https://github.com/YouSuuKou/crypt</a ></p >
+        <p>When time goes back to 2023.09.01, I first touched coding named Scratch. Quickly, I fall in love with controling how the code runs.
+    On the first IT class, I learnt C++, found it was much more interesting than Scratch. In 1 year, I learnt crypto, concurrency, fstream, module, and 
+    even touched <code>template</code>. To support my developing interest, I studied Calculus, was more hard to learn English and law.
+     The most valuable project I have developed is <a href="https://github.com/YouSuuKou/crypt" target="_blank">crypt</a>.</p>
     </div>
-
+    
     <button class="controls prev-btn" onclick="goPrev()">PgUp</button>
     <button class="controls next-btn" onclick="goNext()">PgDn</button>
     <button class="controls fullscreen-btn" onclick="toggleFullscreen()">Full Scr</button>
 </div>
 
 <div class="slide" id="slide7">
-    <h1>Journey</h1>
+    <h1>Projects</h1>
 
     <button class="controls prev-btn" onclick="goPrev()">PgUp</button>
     <button class="controls next-btn" onclick="goNext()">PgDn</button>
@@ -292,27 +300,23 @@
 
 <div class="slide" id="slide8">
     <div class="text-content">
-        <p>Throughout my learning journey, I've adhered to the saying from Linus Torvalds: Software is like ***. It's better when it's free. I often spend at least three hours in one sitting while coding.
-             I truly enjoy the sense of control over how the code runs and the output it produces. Every time I commit and push my code to GitHub, I feel a great sense of accomplishment. 
-             While developing, my copyright awareness is getting more and more clear.</p >
-        <p>By the way, I brought a program named <a href="https://github.com/YouSuuKou/pc-test" target="_blank">pc-test</a>, it is my first C++ project that published on GitHub.</p>
-        <p>While others are following stars on internet, such as Zhou Jielun,
-             I'm chasing the god in computer - Linus Torvalds. He published the greatest open-source project: Linux Core.
-            Today, the server of software we are using like bilibili, baidu, games, WeChat and so on are all using
-            Linux Operating System, because it is safe, and Linus Torvalds never get any money from users except donation.
-             This <a href="videos/Linux_Office.mp4" target="_blank">video</a> shows
-            Linus Torvalds' office. So someone asks me why do I open source, I will show a photo of Linus Torvalds.
-            </p>
+        <p>Why do I said that crypt is the most valuable?
+             On 2026.02.15, the day before New Year's Eve, my classmate in primary school posted a negative message that described 
+            how her parents viewed her privacy and said that she wanted to kill herself to keep away from pains. First, I explained how the world beautiful 
+        it is, but no effects echoed. She still said that how the death could solve her problems. In anxiety, I found a way to help her.
+    She disgusted her parents check her messages, didn't her? As the result, I developed this project to protect her privacy and published to GitHub.</p>
+        <p>This crypto software isn't good so far, because it is just an encoder, translate contents into Unicode. It isn't safe at all!
+            However, it actually saved the classmate's life. I plan to update AES-256 crypto algorithm and remake the core by C++ for this project.
+            It recorded how I saved others' life by lending a hand. I will never forget that.
+        </p>
     </div>
-
     <button class="controls prev-btn" onclick="goPrev()">PgUp</button>
     <button class="controls next-btn" onclick="goNext()">PgDn</button>
     <button class="controls fullscreen-btn" onclick="toggleFullscreen()">Full Scr</button>
 </div>
 
 <div class="slide" id="slide9">
-    <h1>Dream</h1>
-
+    <h1>Chasing Star</h1>
     <button class="controls prev-btn" onclick="goPrev()">PgUp</button>
     <button class="controls next-btn" onclick="goNext()">PgDn</button>
     <button class="controls fullscreen-btn" onclick="toggleFullscreen()">Full Scr</button>
@@ -320,20 +324,44 @@
 
 <div class="slide" id="slide10">
     <div class="text-content">
-        <p>In summary, programming is the only hobby I've consistently pursued for over a year.
-             I'm currently learning AI and crypto. If you also enjoy developing, feel free to chat with me!
-              You can also follow my GitHub account: <a href="https://github.com/YouSuuKou" target="_blank">https://github.com/YouSuuKou</a > and install my software.</p >
+        <p>
+        In the developing journey, I am also chasing a star in my mind—Linus Torvalds. 
+        In 1991, he published the biggest open-source project—<a href="https://github.com/torvalds/linux" target="_blank">Linux</a>.
+        Today, almost all servers like BiliBili, YouTube, Tencent use Linux operating system because it is open-source and safe, 
+        as well as Linus Torvalds never demand users any money. Although he only gets meager donation, Linus Torvalds still maintains Linux. 
+        In your mind, <a href="images/Microsoft.jpg" target="_blank">Microsoft</a> and <a href="images/Apple_Park.jpg" target="_blank">Apple</a> are very modern, right?
+        And this is <a href="videos/Linux_Office.mp4" target="_blank">Linux headquarter</a>.
+         As his saying goes, "I don't have anything against people making money. I just don't want to be the one who has to care about it."
+        </p>
     </div>
-
     <button class="controls prev-btn" onclick="goPrev()">PgUp</button>
     <button class="controls next-btn" onclick="goNext()">PgDn</button>
     <button class="controls fullscreen-btn" onclick="toggleFullscreen()">Full Scr</button>
 </div>
 
 <div class="slide" id="slide11">
+    <h1>Dream</h1>
+    <button class="controls prev-btn" onclick="goPrev()">PgUp</button>
+    <button class="controls next-btn" onclick="goNext()">PgDn</button>
+    <button class="controls fullscreen-btn" onclick="toggleFullscreen()">Full Scr</button>
+</div>
+
+<div class="slide" id="slide12">
+    <div class="text-content">
+        <p>
+            You know Miku and Luo Tianyi, right? They were generated by Japanese software VOCALOID. So my dream is to learn Machine Learning and algorithm,
+             develop an open-source voice generator that belongs to our motherland, and be a selfless contributor like Linus Torvalds.
+        </p>
+    </div>
+    <button class="controls prev-btn" onclick="goPrev()">PgUp</button>
+    <button class="controls next-btn" onclick="goNext()">PgDn</button>
+    <button class="controls fullscreen-btn" onclick="toggleFullscreen()">Full Scr</button>
+</div>
+
+<div class="slide" id="slide13">
     <h1>Thanks for Watching</h1>
     <h2>Copyright (c) 2026 YouSuuKou. Background video by Alan Becker. Linux office video by LinusTorvalds@youtube and 
-        ByteBack@bilibili. All rights reserved.</h2>
+        ByteBack@bilibili. All rights reserved. Source: <a href="https://github.com/YouSuuKou/coding-lover">https://github.com/YouSuuKou/coding-lover</a></h2>
 
     <button class="controls prev-btn" onclick="goPrev()">PgUp</button>
     <button class="controls next-btn" onclick="goNext()">PgDn</button>
