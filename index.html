@@ -18,6 +18,7 @@
             height: 100vh;
             object-fit: cover;
             z-index: -1;
+            transition: opacity 0.3s;
         }
 
         .text-content {
@@ -28,27 +29,27 @@
             max-width: 80%;
         }
 
-        .title {
+        h1 {
             position: absolute;
             left: 50%;
             top: 25%;
             transform: translateX(-50%);
             color: rgb(0, 217, 255);
             -webkit-text-stroke: 0.25vw white;
-            font-family: "Consolas", "Monaco", monospace;
+            font-family: "Noto Sans CJK SC", sans-serif;
             font-size: 6vw;
             text-align: center;
             width: 80%;
         }
 
-        .subtitle {
+        h2 {
             position: absolute;
             left: 50%;
             top: 45%;
             transform: translateX(-50%);
             color: rgb(0, 217, 255);
             -webkit-text-stroke: 0.15vw white;
-            font-family: "Consolas", "Monaco", monospace;
+            font-family: "Noto Sans CJK SC", sans-serif;
             font-size: 3vw;
             text-align: center;
             width: 80%;
@@ -64,7 +65,7 @@
             text-align: center;
             color: red;
             -webkit-text-stroke: white 0.1rem;
-            font-family: "Consolas",monospace;
+            font-family: "Noto Sans CJK SC",sans-serif;
             font-size: 4rem;
             margin-bottom: 2rem;
             border-bottom: 2px solid #fca5a5;
@@ -72,7 +73,7 @@
         }
 
         .toc-item {
-            font-family: "Consolas",monospace;
+            font-family: "Noto Sans CJK SC",sans-serif;
             display: flex;
             justify-content: space-between;
             align-items: baseline;
@@ -108,10 +109,14 @@
         
         p {
             margin-bottom: 1rem;
-            font-family: 'Consolas',monospace;
+            font-family: 'Noto Sans CJK SC',sans-serif;
             font-size: 2rem;
             color: rgb(255, 255, 255);
             -webkit-text-stroke: rgb(219, 121, 255) 0.05rem;
+        }
+
+        code {
+            font-family: "Consolas", monospace;
         }
 
         /* 超链接样式 */
@@ -119,6 +124,7 @@
             color: #9cceff;
             text-decoration: none;
             -webkit-text-stroke: 0; /* 移除文字描边 */
+            font-family: monospace;
             font-weight: bold;
         }
 
@@ -132,7 +138,7 @@
             border: 1px solid #e9ecef;
             padding: 1rem;
             border-radius: 4px;
-            font-family: Consolas, monospace;
+            font-family: Noto Sans CJK SC, sans-serif;
         }
 
         /* 响应式设计 */
@@ -166,7 +172,7 @@
             color: rgb(0, 0, 0);
             border: none;
             font-size: 1.5rem;
-            font-family: 'Consolas',monospace;
+            font-family: 'Noto Sans CJK SC',sans-serif;
             cursor: pointer;
             min-width: 80px;
             min-height: 50px;
@@ -175,17 +181,20 @@
         .prev-btn {
             bottom: 20px;
             left: 20px;
+            z-index: 999;
         }
 
         .next-btn {
             bottom: 20px;
             right: 20px;
+            z-index: 999;
         }
 
         .fullscreen-btn {
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
+            z-index: 999;
         }
 
         /* 触屏设备优化 */
@@ -203,13 +212,12 @@
     <!-- 视频背景 -->
     <video id="bg-video" autoplay muted loop>
         <source src="videos/Animation_vs._Coding.mp4" type="video/mp4">
-        <!-- 备用图片背景 -->
         Your browser does not support the video tag.
     </video>
 
 <div class="slide" id="slide1">
-    <h1 class="title">Coding Lover</h1>
-    <h3 class="subtitle">Hobbies and Interests</h3>
+    <h1>Coding Lover(Remake Edition)</h1>
+    <h2>Hobbies and Interests</h2>
 
     <button class="controls prev-btn" onclick="goPrev()">PgUp</button>
     <button class="controls next-btn" onclick="goNext()">PgDn</button>
@@ -217,7 +225,7 @@
 </div>
 
 <div class="slide" id="slide2">
-    <h1 class="toc-title">Index</h1>
+    <h3 class="toc-title">Index</h3>
     <div class="toc-container">
         <div class="toc-item toc-level-1" data-target="slide3">
             <span class="toc-chapter">Beginning</span> 
@@ -239,7 +247,7 @@
 </div>
 
 <div class="slide" id="slide3">
-    <h1 class="title">Beginning</h1>
+    <h1>Beginning</h1>
 
     <button class="controls prev-btn" onclick="goPrev()">PgUp</button>
     <button class="controls next-btn" onclick="goNext()">PgDn</button>
@@ -257,7 +265,7 @@
 </div>
 
 <div class="slide" id="slide5">
-    <h1 class="title">History</h1>
+    <h1>History</h1>
 
     <button class="controls prev-btn" onclick="goPrev()">PgUp</button>
     <button class="controls next-btn" onclick="goNext()">PgDn</button>
@@ -275,7 +283,7 @@
 </div>
 
 <div class="slide" id="slide7">
-    <h1 class="title">Journey</h1>
+    <h1>Journey</h1>
 
     <button class="controls prev-btn" onclick="goPrev()">PgUp</button>
     <button class="controls next-btn" onclick="goNext()">PgDn</button>
@@ -303,7 +311,7 @@
 </div>
 
 <div class="slide" id="slide9">
-    <h1 class="title">Dream</h1>
+    <h1>Dream</h1>
 
     <button class="controls prev-btn" onclick="goPrev()">PgUp</button>
     <button class="controls next-btn" onclick="goNext()">PgDn</button>
@@ -323,9 +331,9 @@
 </div>
 
 <div class="slide" id="slide11">
-    <h1 class="title">Thanks for Watching</h1>
-    <h1 class="subtitle">Copyright (c) 2026 YouSuuKou. Background video by Alan Becker. Linux office video by LinusTorvalds@youtube and 
-        ByteBack@bilibili. All rights reserved.</h1>
+    <h1>Thanks for Watching</h1>
+    <h2>Copyright (c) 2026 YouSuuKou. Background video by Alan Becker. Linux office video by LinusTorvalds@youtube and 
+        ByteBack@bilibili. All rights reserved.</h2>
 
     <button class="controls prev-btn" onclick="goPrev()">PgUp</button>
     <button class="controls next-btn" onclick="goNext()">PgDn</button>
@@ -335,6 +343,8 @@
 <script>
 let currentSlide = 0;
 const slides = document.querySelectorAll('.slide');
+
+alert("你需要使用Microsoft Edge注释掉<video>标签，翻页后再取消注释。");
 
 // 目录跳转功能
 document.querySelectorAll('.toc-item').forEach(item => {
@@ -402,7 +412,7 @@ document.addEventListener('keydown', (e) => {
 // 视频背景备用方案
 const bgVideo = document.getElementById('bg-video');
 bgVideo.addEventListener('error', function() {
-    console.log('视频加载失败，使用图片背景');
+    alert('视频加载失败，使用图片背景');
     document.body.style.background = "url('images/backgroup-image.jpg') fixed center/cover";
 });
 </script>
